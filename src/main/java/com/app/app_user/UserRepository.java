@@ -1,0 +1,16 @@
+package com.app.app_user;
+
+import com.app.enums.Role;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<AppUser, Long> {
+    Optional<AppUser> findByUsername(String username);
+
+    List<AppUser> findAllByRole(Role role, Sort sort);
+}
